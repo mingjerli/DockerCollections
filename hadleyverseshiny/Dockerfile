@@ -5,7 +5,7 @@ MAINTAINER Ming-Jer Lee "mingjerli@gmail.com"
 ## This is basically install all package in rocker/hadleyverse to rocker/shiny 
 
 RUN apt-get update \
-  && apt-get install -t unstable -y --no-install-recommends \
+  && apt-get install -y --no-install-recommends \
     aspell \
     aspell-en \
     ghostscript \
