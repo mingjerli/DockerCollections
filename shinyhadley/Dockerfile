@@ -1,4 +1,5 @@
-FROM rocker/hadleyverse
+# FROM rocker/hadleyverse
+FROM mingjerli/hadleyverseplus
 
 MAINTAINER Ming-Jer Lee "mingjerli@gmail.com"
 
@@ -19,6 +20,18 @@ RUN wget --no-verbose https://s3.amazonaws.com/rstudio-shiny-server-os-build/ubu
     rm -f version.txt ss-latest.deb && \
     R -e "install.packages(c('shiny', 'rmarkdown'), repos='https://cran.rstudio.com/')" && \
     cp -R /usr/local/lib/R/site-library/shiny/examples/* /srv/shiny-server/
+
+# Download and install extra R package
+RUN install2.r --error -l /usr/lib/R/site-library -d TRUE\
+    shinyBS \
+    shinythemes \
+    treemap \
+    networkD3 \ 
+    xts \
+    dygraphs \
+    glmnet \
+    reshape \
+  && rm -rf /tmp/downloaded_packages/ /tmp/*.rds
 
 EXPOSE 3838
 

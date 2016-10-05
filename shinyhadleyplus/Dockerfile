@@ -12,7 +12,6 @@ RUN install2.r --error -l /usr/lib/R/site-library -d TRUE\
     dygraphs \
     glmnet \
     reshape \
-  && r -e "remotes::install_github('timelyportfolio/d3treeR', lib='/usr/lib/R/site-library')" \ 
   && rm -rf /tmp/downloaded_packages/ /tmp/*.rds
 
 EXPOSE 3838
