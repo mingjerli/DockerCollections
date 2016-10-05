@@ -3,10 +3,17 @@ FROM mingjerli/shinyhadleyverse
 MAINTAINER Ming-Jer Lee "mingjerli@gmail.com"
 
 # Download and install dependency packages
-RUN  R -e "install.packages(c('shinyBS', 'shinythemes','treemap','networkD3','xts','dygraphs','glmnet','reshape'), repos='https://cran.rstudio.com/')" && \
-     R -e "devtools::install_github('timelyportfolio/d3treeR')"
+RUN install2.r --error -l /usr/lib/R/site-library -d TRUE\
+    shinyBS \
+    shinythemes \
+    treemap \
+    networkD3 \ 
+    xts \
+    dygraphs \
+    glmnet \
+    reshape \
+  && r -e "remotes::install_github('timelyportfolio/d3treeR', lib='/usr/lib/R/site-library')" \ 
+  && rm -rf /tmp/downloaded_packages/ /tmp/*.rds
 
 EXPOSE 3838
 
-#ENTRYPOINT ["/usr/bin/shiny-server.sh"]
-#CMD ["/usr/bin/shiny-server.sh"]
