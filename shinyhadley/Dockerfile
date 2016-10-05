@@ -31,6 +31,7 @@ RUN install2.r --error -l /usr/lib/R/site-library -d TRUE\
     dygraphs \
     glmnet \
     reshape \
+    plotly \
     IMFData \
   && rm -rf /tmp/downloaded_packages/ /tmp/*.rds
 
