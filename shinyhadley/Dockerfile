@@ -38,6 +38,7 @@ RUN install2.r --error -d TRUE\
     caret \
     zoo \
     PerformanceAnalytics \
+    gtrendsR \
   && r -e "remotes::install_github('timelyportfolio/d3treeR')" \ 
   && rm -rf /tmp/downloaded_packages/ /tmp/*.rds
 
