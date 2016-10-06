@@ -1,5 +1,5 @@
-# FROM rocker/hadleyverse
-FROM mingjerli/hadleyverseplus
+FROM rocker/hadleyverse
+# FROM mingjerli/hadleyverseplus
 
 MAINTAINER Ming-Jer Lee "mingjerli@gmail.com"
 
@@ -22,7 +22,7 @@ RUN wget --no-verbose https://s3.amazonaws.com/rstudio-shiny-server-os-build/ubu
     cp -R /usr/local/lib/R/site-library/shiny/examples/* /srv/shiny-server/
 
 # Download and install extra R package
-RUN install2.r --error -l /usr/lib/R/site-library -d TRUE\
+RUN install2.r --error -d TRUE\
     shinyBS \
     shinythemes \
     treemap \
@@ -33,7 +33,12 @@ RUN install2.r --error -l /usr/lib/R/site-library -d TRUE\
     reshape \
     plotly \
     DT \
+    plyr \
     IMFData \
+    caret \
+    zoo \
+    PerformanceAnalytics \
+  && r -e "remotes::install_github('timelyportfolio/d3treeR')" \ 
   && rm -rf /tmp/downloaded_packages/ /tmp/*.rds
 
 EXPOSE 3838
