@@ -39,6 +39,7 @@ RUN install2.r --error -d TRUE\
     zoo \
     PerformanceAnalytics \
     gtrendsR \
+    ggfortify \
   && r -e "remotes::install_github('timelyportfolio/d3treeR')" \ 
   && rm -rf /tmp/downloaded_packages/ /tmp/*.rds
 
