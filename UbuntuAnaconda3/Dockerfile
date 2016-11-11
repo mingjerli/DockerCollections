@@ -1,7 +1,8 @@
 FROM ubuntu:14.04
 MAINTAINER Ming-Jer Lee <mingjerli@gmail.com>
 
-RUN apt-get update --fix-missing && apt-get install -y wget bzip2 ca-certificates \
+RUN apt-get update --fix-missing && apt-get install -y \
+    wget bzip2 ca-certificates \
     libglib2.0-0 libxext6 libsm6 libxrender1 \
     git mercurial subversion
 
@@ -18,6 +19,8 @@ RUN apt-get install -y curl grep sed dpkg && \
     apt-get clean
 
 ENV PATH /opt/conda/bin:$PATH
+
+EXPOSE 8888
 
 ENTRYPOINT [ "/usr/bin/tini", "--" ]
 CMD [ "/bin/bash" ]
