@@ -1,4 +1,4 @@
-FROM ubuntu:14.04
+FROM nvidia/cuda:8.0-cudnn5-devel-ubuntu16.04
 MAINTAINER Ming-Jer Lee <mingjerli@gmail.com>
 
 RUN apt-get update --fix-missing && apt-get install -y \
